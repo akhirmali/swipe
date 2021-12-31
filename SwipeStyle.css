@@ -18,13 +18,13 @@ body {
 }
 
 
-@media only screen and (max-width: 1600px) {
+@media only screen and (max-width: 639px) {
   body {
     background-position-y: var(--milkshake__background-top);
   }
 }
 
-@media only screen and (max-width: 1600px) {
+@media only screen and (max-width: 639px) {
   body {
     background: white;
   }
