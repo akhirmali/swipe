@@ -1,1 +1,385 @@
 
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue',
+    sans-serif;
+  font-size: 16px;
+  height: 100%;
+  line-height: 1.5;
+}
+
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: var(--milkshake__background);
+}
+
+
+@media only screen and (max-width: 639px) {
+  body {
+    background-position-y: var(--milkshake__background-top);
+  }
+}
+
+@media only screen and (max-width: 639px) {
+  body {
+    background: white;
+  }
+}
+
+.js-app-shell {
+  height: 100%;
+}
+
+/*
+Set normal default weight on headings so boldness can be
+controlled on a per-font basis by the global FONT classes
+*/
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 400;
+}
+
+/* Minimal margin reset to ensure we're not accidentally relying on browser defaults */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
+.milkshake__root {
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+.milkshake__wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-container {
+  height: 100%;
+  width: 100%;
+}
+
+.milkshake-card__wrapper {
+  height: 100%;
+}
+
+.swiper-slide {
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+.milkshake__desktop-button-wrapper {
+  display: none;
+}
+
+@media only screen and (min-width: 640px) {
+  .milkshake__desktop-button-wrapper {
+    cursor: pointer;
+    text-decoration: none;
+    max-width: 132px;
+    width: 100%;
+    display: flex;
+    padding: 0 4px;
+    transition: opacity 0.4s;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+  }
+
+  .milkshake__desktop-nav-disabled .milkshake__desktop-button-wrapper {
+    display: none;
+  }
+
+  .milkshake__desktop-button-disabled {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .milkshake__desktop-button-wrapper:last-child {
+    justify-content: flex-end;
+  }
+
+  .milkshake__desktop-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff;
+    font-size: 16px;
+    width: 100%;
+    max-width: 84px;
+    height: 54px;
+    border-radius: 28px;
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.07);
+  }
+
+  .milkshake__root {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .milkshake__wrapper .swiper-container {
+    margin: 0;
+    width: 414px;
+    min-width: 414px;
+    height: 654px;
+    box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.15);
+  }
+}
+
+body {
+  padding-top: 24px;
+}
+
+body.milkshake-nav-bar-hidden {
+  padding-top: 0;
+}
+
+.milkshake-nav-bar {
+  position: fixed;
+  top: 0 !important;
+  background-color: #fff;
+  width: 100vw;
+  height: 24px;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.milkshake-nav-bar-hidden .milkshake-nav-bar {
+  display: none;
+  visibility: hidden;
+}
+
+.swiper-pagination {
+  width: 100vw !important;
+}
+
+.swiper-pagination .swiper-pagination-bullet-active-prev,
+.swiper-pagination .swiper-pagination-bullet-active-next,
+.swiper-pagination .swiper-pagination-bullet-active-main,
+.swiper-pagination .swiper-pagination-bullet {
+  margin: 0 2px;
+  width: 6px;
+  height: 6px;
+  background-color: #000;
+  opacity: 0.15;
+  transition: all 0.5s ease 0.2s !important;
+}
+
+.swiper-pagination .swiper-pagination-bullet-active {
+  opacity: 1;
+  background-color: #123659;
+  transition: all 0.5s ease 0.2s !important;
+}
+
+.swiper-pagination .swiper-pagination-bullet {
+  left: auto !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  .milkshake-nav-bar {
+    background-color: #4d4d4d;
+  }
+
+  .swiper-pagination .swiper-pagination-bullet {
+    background-color: #fff;
+  }
+}
+
+/*
+NOTE(karen): Swiper JS sets the bullets area width dynamically with an
+inline style that breaks in odd ways when wrapped in another div.  I've
+overridden the width above to be auto, & here manually hide bullets that
+should't be seen.
+ */
+span[class='swiper-pagination-bullet'] {
+  display: none;
+}
+
+@media only screen and (min-width: 640px) {
+  .milkshake-nav-bar {
+    display: none;
+  }
+
+  .milkshake-nav-buttons-wrapper {
+    display: none;
+  }
+}
+
+.milkshake-nav-buttons {
+  position: absolute;
+  bottom: 160px;
+  width: 100%;
+  height: 104px;
+  z-index: 2;
+  overflow: hidden;
+  pointer-events: none;
+
+  /* Hide them initially */
+  display: none;
+}
+
+.milkshake-nav-buttons-wrapper {
+  position: absolute;
+  bottom: 0;
+  right: 8px;
+  height: 104px;
+  transition: right 0.8s;
+}
+
+.milkshake-button-prev .milkshake-button {
+  margin-bottom: 8px;
+  padding-right: 2px;
+}
+
+.milkshake-button-next .milkshake-button {
+  padding-left: 2px;
+}
+
+.milkshake-button-prev,
+.milkshake-button-next {
+  outline: none;
+  z-index: 1;
+  pointer-events: all;
+}
+
+.milkshake-button {
+  width: 48px;
+  height: 48px;
+  border-radius: 24px;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.4s;
+}
+
+.swiper-button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.swiper-button:active .milkshake-button {
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.swiper-button-disabled .milkshake-button {
+  opacity: 0;
+}
+
+/*
+Animate next button
+*/
+@-webkit-keyframes jiggleRight {
+  0% {
+    transform: translateX(0px) scale(1);
+  }
+
+  20% {
+    transform: translateX(4px) scale(1.05);
+  }
+
+  40% {
+    transform: translateX(0px) scale(1);
+  }
+
+  100% {
+    transform: translateX(0px) scale(1);
+  }
+}
+@keyframes jiggleRight {
+  0% {
+    transform: translateX(0px) scale(1);
+  }
+
+  20% {
+    transform: translateX(4px) scale(1.05);
+  }
+
+  40% {
+    transform: translateX(0px) scale(1);
+  }
+
+  100% {
+    transform: translateX(0px) scale(1);
+  }
+}
+
+.milkshake-button-next .milkshake-button svg {
+  -webkit-animation-duration: 1.5s;
+          animation-duration: 1.5s;
+  -webkit-animation-name: jiggleRight;
+          animation-name: jiggleRight;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-direction: alternate;
+          animation-direction: alternate;
+}
+
+#swiper-desktop-next svg {
+  -webkit-animation-duration: 1.5s;
+          animation-duration: 1.5s;
+  -webkit-animation-name: jiggleRight;
+          animation-name: jiggleRight;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-direction: alternate;
+          animation-direction: alternate;
+}
+
+.milkshake__landscape-detection {
+  display: none;
+}
+
+@media screen and (max-device-width: 767px) and (min-device-width: 320px) and (orientation: landscape) {
+  .milkshake__landscape-detection {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    z-index: 1;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    padding: 32px;
+    text-align: center;
+  }
+
+  .milkshake__landscape-detection-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 310px;
+  }
+
+  .milkshake__landscape-detection-image {
+    margin-bottom: 20px;
+  }
+}
