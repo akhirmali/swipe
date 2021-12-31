@@ -1,5 +1,4 @@
 
-
 * {
   box-sizing: border-box;
 }
@@ -246,8 +245,9 @@ span[class='swiper-pagination-bullet'] {
 }
 
 .milkshake-nav-buttons-wrapper {
-  position: absolute;
-  bottom: 0;
+	position: fixed;
+	top: 50%;
+
   right: 8px;
   height: 104px;
   transition: right 0.8s;
