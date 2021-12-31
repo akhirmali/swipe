@@ -18,17 +18,7 @@ body {
 }
 
 
-@media only screen and (max-width: 1600px) {
-  body {
-    background-position-y: var(--milkshake__background-top);
-  }
-}
 
-@media only screen and (max-width: 1600) {
-  body {
-    background: white;
-  }
-}
 
 .js-app-shell {
   height: 100%;
